@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useContext } from 'react';
 import PokedexList from './components/Pokedex.jsx';
-import PokemonCard from './components/PokemonCard.jsx';
+import Pokemon from './components/Pokemon.jsx';
 import {
   Routes,
   Route,
@@ -14,7 +14,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<PokedexList />} />
-      <Route path="/:pokemonID" element={<PokemonCard />} />
+      <Route path="/:pokemonID" element={<Pokemon />} />
     </Routes>
   );
 }

@@ -8,16 +8,6 @@ export const KantoContext = createContext({
 export const KantoProvider = ({ children }) => {
   const [pokemonList, setPokemonList] = useState({});
 
-  const options = {
-    protocol: 'https',
-    hostName: 'localhost:443',
-    versionPath: '/api/v2/',
-    cacheLimit: 100 * 1000, // 100s
-    timeout: 5 * 1000 // 5s
-  }
-
-  const P = new Pokedex();
-
   useEffect(() => {
     axios.get("https://pokeapi.co/api/v2/pokedex/2/")
     .then((response) => {

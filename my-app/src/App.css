@@ -1,5 +1,37 @@
 body {
   margin: 0;
   height: 100%;
-  background-color: #87ceeb;
+  overflow: hidden;
+}
+
+.main-container {
+  border: 10px solid;
+  padding: 5% 25%;
+  overflow: hidden;
+  /* background: url('./images/pokeball.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+}
+
+.pokedex-container {
+  max-height: 700px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+.cardName {
+  font-family: "Flexo-Bold",arial,sans-serif;
+  color: #919191;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  main-container {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
 }
