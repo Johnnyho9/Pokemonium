@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { AppBar, Toolbar, Grid, TextField } from "@material-ui/core";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from "@material-ui/icons/Search";
 import PokemonCard from './PokemonCard';
 import axios from 'axios';
+import { LocalStorageContext } from '../context/local-storage.context.jsx';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -25,6 +26,15 @@ const useStyles = makeStyles(theme => ({
     width: "200px",
     margin: "5px",
   },
+  appBar_container: {
+    display: 'flex'
+  },
+  pokemon_title: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: '28%'
+  }
 }))
 
 const PokedexList = () => {
@@ -35,7 +45,6 @@ const PokedexList = () => {
   useEffect(() => {
     axios.get("https://pokeapi.co/api/v2/pokedex/2/")
     .then((response) => {
-      console.log(response.data.pokemon_entries);
       setPokemonList(response.data.pokemon_entries)
     })
     .catch((error) => {
@@ -47,31 +56,33 @@ const PokedexList = () => {
     setSearchInput(e.target.value);
   };
 
-  return (
-    <div className='main-container'>
-      <div className='pokedex-container'>
-      <AppBar position='absolute'>
-        <Toolbar>
-          <div className={classes.searchContainer}>
-            <SearchIcon className={classes.searchIcon}/>
-            <TextField
-              className={classes.searchInput}
-              label='Pokemon..'
-              variant='standard'
-              onChange={handleSearchInput}/>
-          </div>
-          <img src='../images/pokemon_title.png'></img>
-        </Toolbar>
-      </AppBar>
-      <Grid container spacing={1} className={classes.container}>
-        {pokemonList.map((pokemon, index) =>
-          pokemon.pokemon_species.name.includes(searchInput) &&
-          <PokemonCard pokemon={pokemon} key={index}/>
-        )}
-      </Grid>
+  if (pokemonList.length) {
+    return (
+      <div className='main-container'>
+        <div id='slider' className='pokedex-container'>
+        <AppBar position='absolute' className={classes.appBar_container}>
+          <Toolbar>
+            <div className={classes.searchContainer}>
+              <SearchIcon className={classes.searchIcon}/>
+              <TextField
+                className={classes.searchInput}
+                label='Pokemon'
+                variant='standard'
+                onChange={handleSearchInput}/>
+            </div>
+            <img src={require('../images/pokemon_title.png')} className={classes.pokemon_title}></img>
+          </Toolbar>
+        </AppBar>
+        <Grid container spacing={1} className={classes.container}>
+          {pokemonList.map((pokemon, index) =>
+            pokemon.pokemon_species.name.includes(searchInput) &&
+            <PokemonCard pokemon={pokemon} key={index}/>
+          )}
+        </Grid>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default PokedexList;

@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 // import { KantoContext } from './context/kanto-context.jsx'
+import { LocalStorageContext } from './context/local-storage.context';
 
 function App() {
   // const { pokemonList } = useContext(KantoContext);

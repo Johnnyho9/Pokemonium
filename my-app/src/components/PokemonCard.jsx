@@ -37,14 +37,7 @@ const PokemonCard = ({pokemon}) => {
   return (
     <Grid item xs={4} sm={2} onClick={()=> navigate(`/${pokemon.entry_number}`)}>
       <Card className={classes.card} elevation={0}>
-        {/* <CardMedia
-          className={classes.cardMedia}
-          image={pokemonImage}
-          style={{height: '20px', width: '20px'}}/> */}
         <img src={`${pokemonImage}`} className={classes.cardImg}></img>
-        {/* <CardContent className={classes.cardContent}>
-          <Typography className='cardName' >{pokemon.entry_number}</Typography>
-        </CardContent> */}
       </Card>
     </Grid>
   );

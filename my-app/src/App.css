@@ -1,18 +1,16 @@
 body {
   margin: 0;
   height: 100%;
-  overflow: hidden;
-}
-
-.main-container {
-  border: 10px solid;
-  padding: 5% 25%;
-  overflow: hidden;
-  /* background: url('./images/pokeball.jpg') no-repeat center center fixed;
+  /* background: url('./images/background_stripe.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; */
+  font-family: 'Lato', sans-serif;
+}
+
+.main-container {
+  padding: 5% 25%;
 }
 
 .pokedex-container {
@@ -28,6 +26,12 @@ body {
   color: #919191;
   font-weight: 500;
 }
+
+.radar {
+  max-height: 350px;
+  aspect-ratio: 1 / 1;
+}
+
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
   main-container {
